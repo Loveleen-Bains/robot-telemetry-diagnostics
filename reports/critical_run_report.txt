@@ -1,0 +1,10 @@
+================================
+        ROBODIAG REPORT
+================================
+Robot: ROBO-001
+Log: data/critical_run.csv
+Readings analyzed: 10
+
+Overall Health: CRITICAL
+Message: 10/10 readings contained a critical condition.
+================================

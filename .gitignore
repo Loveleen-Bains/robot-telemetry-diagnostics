@@ -11,5 +11,10 @@ __pycache__/
 # Generated reports
 reports/*.txt
 
+# Keep sample diagnostic reports in version control
+!reports/normal_run_report.txt
+!reports/warning_run_report.txt
+!reports/critical_run_report.txt
+
 # Runtime logs
 logs/*.log

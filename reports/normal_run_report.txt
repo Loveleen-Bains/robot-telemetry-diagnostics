@@ -1,0 +1,10 @@
+================================
+        ROBODIAG REPORT
+================================
+Robot: ROBO-001
+Log: data/normal_run.csv
+Readings analyzed: 10
+
+Overall Health: HEALTHY
+Message: No persistent warning detected: 0/10 readings were warnings.
+================================
