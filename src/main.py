@@ -1,8 +1,10 @@
 """Command-line interface for RoboDiag."""
 
 import argparse
+from pathlib import Path
 
 from src.health import analyze_recent_readings
+from src.report import generate_report, save_report
 from src.robot import Robot
 from src.telemetry import TelemetryLog
 
@@ -32,18 +34,26 @@ def main() -> None:
         robot,
     )
 
-    print("================================")
-    print("        ROBODIAG REPORT")
-    print("================================")
-    print(f"Robot: {robot.robot_id}")
-    print(f"Log: {args.telemetry_file}")
-    print(f"Readings analyzed: {len(recent_readings)}")
-    print()
-    print(f"Overall Health: {health.status}")
-    print(f"Message: {health.message}")
-    print("================================")
+    report = generate_report(
+        robot=robot,
+        telemetry_file=args.telemetry_file,
+        readings_analyzed=len(recent_readings),
+        health=health,
+    )
+
+    print(report)
+
+    telemetry_path = Path(args.telemetry_file)
+    report_name = f"{telemetry_path.stem}_report.txt"
+    report_path = Path("reports") / report_name
+
+    save_report(
+        report,
+        report_path,
+    )
+
+    print(f"Report saved to: {report_path}")
 
 
 if __name__ == "__main__":
     main()
-    
